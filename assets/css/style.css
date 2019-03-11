@@ -1,0 +1,33 @@
+
+body{
+    background-color: lightpink
+}
+
+.navbar_custom{
+    background-color: midnightblue
+}
+
+.container_custom{
+    background-color: white;
+    padding: 20px;
+}
+
+.image_custom{
+    width:80%;
+    height:auto;
+}
+
+.button_custom{
+    background-color: mediumseagreen
+}
+
+#wubbalubbadubdub{
+    color: white;
+}
+
+@font-face {
+    font-family:'Get Schwifty';
+    src: url('./fonts/get_schwifty.ttf') format('true type');
+    }
+
+
