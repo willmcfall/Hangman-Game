@@ -1,15 +1,23 @@
 
 body{
-    background-color: lightpink
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+h1{
+    
+
 }
 
 .navbar_custom{
     background-color: midnightblue
 }
 
+.background_custom{
+    background-color: lightpink
+}
+
+
 .container_custom{
-    background-color: white;
-    padding: 20px;
+    background-color: white
 }
 
 .image_custom{
@@ -17,17 +25,7 @@ body{
     height:auto;
 }
 
-.button_custom{
-    background-color: mediumseagreen
-}
-
 #wubbalubbadubdub{
-    color: white;
+    color: white
+
 }
-
-@font-face {
-    font-family:'Get Schwifty';
-    src: url('./fonts/get_schwifty.ttf') format('true type');
-    }
-
-
