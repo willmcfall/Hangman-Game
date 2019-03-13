@@ -21,11 +21,11 @@ console.log(numWins);
 var numLosses = 0;
 console.log(numLosses);
 
-var numGuesses = 10;
-console.log(numGuesses);
+var numWrong = 0;
+console.log(numWrong);
 
-var numRemaining = "";
-console.log(numRemaining);
+var numRight = 0;
+console.log(numRight);
 
 var guessLetter = "";
 console.log(guessLetter);
@@ -48,9 +48,10 @@ console.log(actualWordLowerSplit);
 var guessLetterArray= [""];
 console.log(guessLetterArray);
 
+var placeHolder= 0;
+
+
 alert("Please select a letter from A - Z")
-
-
 
 
 // Creates an array that holds all words that could be potentially used
@@ -66,11 +67,11 @@ console.log(actualWord);
 console.log(actualWordLower);
 console.log(actualWordLowerSplit);
 var numRemaining = actualWordLower.length;
-console.log(numRemaining)
+console.log(numRemaining);
 
 
 for (i = 0; i < actualWordLowerSplit.length; i++) {
-  if (actualWord.charAt[i] === " ") {
+  if (actualWordLowerSplit[i] == " ") {
     blankSpaces[i] = " - ";
   } else {
     blankSpaces[i] = " _ ";
@@ -91,26 +92,38 @@ document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
   var guessLetter = event.key;
   console.log(guessLetter);
   var guessLetterLower = guessLetter.toLowerCase();
+  guessLetterArray.push(guessLetterLower)
   console.log(guessLetterLower);
 
 // Checks if matching and replaces the empty spaces in the array blankSpaces
 for (var i = 0; i < actualWordLowerSplit.length; i++) {
   if (actualWordLowerSplit[i] === guessLetterLower) {
   blankSpaces[i] = " " + guessLetterLower + " ";
-  document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces;
+  document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
    }
   else{
-    numGuesses--;
+    placeHolder ++ ;
+    console.log(placeHolder);
   }
   }
 
 
+  if (placeHolder == actualWordLowerSplit.length){
+    numWrong ++;
+    placeHolder = 0;
+  }
+    else{
+    numRight ++;
+    placeHolder = 0;
+    }
+
+    console.log(placeHolder);
 
 //If incorrect
 
   
-  document.getElementById("guesses").innerHTML = "Number of Guesses Remaining: " + numGuesses;
-  document.getElementById("already").innerHTML = "Letters Already Guessed: ";
+  document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
+  document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
   }
 
 }
