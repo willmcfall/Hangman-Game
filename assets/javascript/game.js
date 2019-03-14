@@ -1,150 +1,160 @@
-
-// Step 1. Awaits for user to click start button then calls a function called myFunction
-// Step 2. Creates variables to default initial values
-// Step 2. Console logs the actual word that was randomly selected to ensure that blank spaces are accurately generated
-// Step 3. Runs For loop that assigns a value of " _ " if there is a letter and a value of " - " if there is a space or slash
-// Step 4. 
-
-
-function initiationFunction(){
-
-
-// Creates variable and establishes an inital value of zero for wins
-// Creates variable and establishes an inital value of zero for losses
-// Creates variable and establishes an inital value of ten for number of guesses
-// Creates variable and establishes an inital value of null for number of remaining guesses
-// Creates variable that holds the letter guessed by the user
-// Creates a variables that will hold the blank spaces for word to be guessed
+// Creates a global variable (NumWins) which holds the number of times the user has won and establishes an inital value of zero
 var numWins = 0;
 console.log(numWins);
 
+// Creates a global variable (NumLosses) which holds the number of times the user has lost and establishes an inital value of zero
 var numLosses = 0;
 console.log(numLosses);
 
-var numWrong = 0;
-console.log(numWrong);
-
-var numRight = 0;
-console.log(numRight);
-
-var guessLetter = "";
-console.log(guessLetter);
-
-var guessLetterLower = "";
-console.log(guessLetterLower);
-
-var blankSpaces = [""];
-console.log(blankSpaces);
-
-var actualWord = "";
-console.log(actualWord);
-
-var actualWordLower = "";
-console.log(actualWordLower);
-
-var actualWordLowerSplit = [""];
-console.log(actualWordLowerSplit);
-
-var guessLetterArray= [""];
-console.log(guessLetterArray);
-
-var placeHolder= 0;
 
 
-alert("Please select a letter from A - Z")
+// Initiataes a function upon clicking of the start button
+function initiationFunction() {
 
+// Creates a global variable (continueCycle) which holds a boolean variable that allows for reseting of the game
+var continueCycle = true;
+console.log(continueCycle);
 
-// Creates an array that holds all words that could be potentially used
-// Creates randomized word that holds the current word to be guessed
-// Creates lower case version of word to be guessed
-// Creates an array of the individual letters in the word to tbe guessed
+  // Asks the user to select a letter from A - Z
+  alert("Please select a letter from A - Z")
 
-var potentialWord = ["Rick Sanchez","Morty Smith","Summer Smith","Beth Smith","Jerry Smith","Abadango Cluster Princess","Abradolf Lincler","Adjudicator Rick","Agency Director","Alan Rails","Albert Einstein","Alexander","Alien Googah","Alien Morty","Alien Rick","Amish Cyborg",
-"Annie","Antenna Morty","Antenna Rick","Ants in my Eyes Johnson", "Mr Poopy Butthole"];
-var actualWord = potentialWord[Math.floor(Math.random() * potentialWord.length)];
-var actualWordLower = actualWord.toLowerCase();
-var actualWordLowerSplit = actualWordLower.split("");
-console.log(actualWord);
-console.log(actualWordLower);
-console.log(actualWordLowerSplit);
-var numRemaining = actualWordLower.length;
-console.log(numRemaining);
+  startCycle();
 
+  // Initiataes a function that runs until the continueCycle takes a value of false when the user wins or loses
+  function startCycle() {
+    if (continueCycle == true) {
 
-for (i = 0; i < actualWordLowerSplit.length; i++) {
-  if (actualWordLowerSplit[i] == " ") {
-    blankSpaces[i] = " - ";
-  } else {
-    blankSpaces[i] = " _ ";
-  }
-}
+      // Creates an event dependent number variable (NumRight) which holds the number of times the user has guessed right and establishes an inital value of zero
+      var numRight = 0;
+      console.log(numRight);
 
-console.log(blankSpaces)
-// Prints the blankspaces to the display
-document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces;
-// Prints the number of wins to the display
-document.getElementById("wins").innerHTML = "Number of Wins: " + numWins;
-// Prints the number of loses to the display
-document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
+      // Creates an event dependent number variable (NumWrong) which holds the number of times the user has guessed wrong and establishes an inital value of zero
+      var numWrong = 0;
+      console.log(numWrong);
 
+      // Creates an event dependent string variable (guessLetter) which holds the letter guessed by the user and establishes an inital value of N/A
+      var guessLetter = "";
+      console.log(guessLetter);
 
-// Waits for key stroke and initiates a function
-  document.onkeyup = function(event) {
-  var guessLetter = event.key;
-  console.log(guessLetter);
-  var guessLetterLower = guessLetter.toLowerCase();
-  guessLetterArray.push(guessLetterLower)
-  console.log(guessLetterLower);
+      // Creates an event dependent string variable (guessLetterLower) which holds a lower case version of the letter guessed by the user and establishes an inital value of N/A
+      var guessLetterLower = "";
+      console.log(guessLetterLower);
 
-// Checks if matching and replaces the empty spaces in the array blankSpaces
-for (var i = 0; i < actualWordLowerSplit.length; i++) {
-  if (actualWordLowerSplit[i] === guessLetterLower) {
-  blankSpaces[i] = " " + guessLetterLower + " ";
-  document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
-   }
-  else{
-    placeHolder ++ ;
-    console.log(placeHolder);
-  }
-  }
+      // Creates an event dependent array (guessLetterArray) which allows for iteration across the actualWordLowerSplit
+      var guessLetterArray = [""];
+      console.log(guessLetterArray);
 
+      // Creates an event dependent array (potentialWord) which holds guessed all the potential words to be randomly selected as a word to be guessed
+      var potentialWord = [""];
+      console.log(potentialWord);
 
-  if (placeHolder == actualWordLowerSplit.length){
-    numWrong ++;
-    placeHolder = 0;
-  }
-    else{
-    numRight ++;
-    placeHolder = 0;
-    }
+      // Creates an event dependent string variable (actualWord) which holds the word to be guessed by the user and establishes an inital value of N/A
+      var actualWord = "";
+      console.log(actualWord);
 
-    console.log(placeHolder);
+      // Creates an event dependent string variable (actualWordLower) which holds the lowercase word to be guessed by the user and establishes an inital value of N/A
+      var actualWordLower = "";
+      console.log(actualWordLower);
 
+      // Creates an event dependent array (actualWordLowerSplit) which holds all the lowercase letters for the word to be guessed by the user
+      var actualWordLowerSplit = [""];
+      console.log(actualWordLowerSplit);
 
-    if (numWrong == 10){
-      numLosses ++;
-      document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
-      numWrong = 0;
-      numRight = 0;
-      guessLetterArray = [];
-    }
+      // Creates a event dependent array (blankSpaces) which holds an array of blank spaces equivalent of the word to be guessed and establishes an array with inital values of N/A
+      var blankSpaces = [""];
+      console.log(blankSpaces);
 
-    if (numWrong == 10){
-      numLosses ++;
+      // Creates event dependent variable (placeHolder) which allows for calculation of number of right responses and number of wrong responses
+      var placeHolder = 0;
+      console.log(placeHolder);
+
+      // Creates an array called actualWordLowerSplit which includes a randomly generated word, moved to lowercase, and then split by characters
+      potentialWord = ["Rick Sanchez", "Morty Smith", "Summer Smith", "Beth Smith", "Jerry Smith", "Abadango Cluster Princess", "Abradolf Lincler", "Adjudicator Rick", "Agency Director", "Alan Rails", "Albert Einstein", "Alexander", "Alien Googah", "Alien Morty", "Alien Rick", "Amish Cyborg",
+        "Annie", "Antenna Morty", "Antenna Rick", "Ants in my Eyes Johnson", "Mr Poopy Butthole"];
+      actualWord = potentialWord[Math.floor(Math.random() * potentialWord.length)];
+      actualWordLower = actualWord.toLowerCase();
+      actualWordLowerSplit = actualWordLower.split("");
+      console.log(actualWord);
+      console.log(actualWordLower);
+      console.log(actualWordLowerSplit);
+
+      // Creates an array called blankSpaces which creates _ for all characters in the array actualWordLowerSplit
+      for (i = 0; i < actualWordLowerSplit.length; i++) {
+        if (actualWordLowerSplit[i] == " ") {
+          blankSpaces[i] = " - ";
+        }
+         else {
+          blankSpaces[i] = " _ ";
+        };
+      };
+
+      console.log(blankSpaces)
+
+      // Prints the blankspaces, wins, and loses to the display
+      document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces;
       document.getElementById("wins").innerHTML = "Number of Wins: " + numWins;
-      // Prints the number of loses to the display
       document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
-      numWrong = 0;
-    }
 
-    
+
+      // Waits for key stroke from the user and and initiates a function that greates a lowercase version of the letter selected and converts to array 
+      document.onkeyup = function (event) {
+        var guessLetter = event.key;
+        var guessLetterLower = guessLetter.toLowerCase();
+        guessLetterArray.push(guessLetterLower);
+        console.log(guessLetter);
+        console.log(guessLetterLower);
+        console.log(guessLetterArray);
+
+      // Checks if guessed letter matches any in the array to be guessed and replaces with the correct letter
+      for (var i = 0; i < actualWordLowerSplit.length; i++) {
+        if (actualWordLowerSplit[i] === guessLetterLower) {
+          blankSpaces[i] = " " + guessLetterLower + " ";
+          document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
+        }
+        else {
+          placeHolder++;
+        }
+      };
+
+      console.log(placeHolder);
+
+
+      // Checks whether any the guessed letter matches any letters from the word to be guessed and adds to numWrong if wrong and numRight if correct
+      if (placeHolder == actualWordLowerSplit.length) {
+        numWrong++;
+        placeHolder = 0;
+      }
+      else {
+        numRight++;
+        placeHolder = 0;
+      };
+
+      console.log(placeHolder);
+
+      // If numWrong == 10 then the game is over and it restarts
+      if (numWrong == 10) {
+        numLosses++;
+        document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
+        document.getElementById("currentword").innerHTML = "Current Word: ";
+        numWrong = 0;
+        numRight = 0;
+        guessLetterArray = [];
+        continueCycle = false;
+        alert("You Lost. Please click start to play again!");
+      };
+
+      document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
+      document.getElementById("correct").innerHTML = "Number of Guesses Right: " + numRight;
+      document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
+
+      };
+
+    };
+
+  };
+
   
-  document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
-  document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
-  }
-
-}
-
+};
 
 
 
