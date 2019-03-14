@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/hover.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Indie+Flower|Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
 
@@ -30,7 +31,7 @@
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
         
-        <h1 class="align-middle">
+        <h1 class="align-middle" id="heading_custom">
           Welcome to the Ricky and Morty Hangman Game!
         </h1>
 
@@ -43,11 +44,15 @@
         <br>
 
         <h2 class="align-left">
-        Please Press Button Below to Get Started!
+        Instructions
+        </h2>
+        <hr>
+        <p> This game is a unique and modern take on the classic children's game Hangman. Users are asked to guess the name of prominent characters from the hit television show Rick and Morty through an iterative process of guessing individual letters from characters name and reflecting on newly shown letters. If the user can guess all the letters of the character's name before providing 10 wrong guesses, they have won the round and are provided with an additional character name. Please press the start button below to begin the game.
+        </p>
         <br>
         <button class= "btn btn-primary button_custom" id="button_display" onclick="initiationFunction()">Start the Game</button>
-        </h2>
-
+        
+        <hr>
         <h2 id="wins" class="align-left">
           Number of Wins:
         </h2>
@@ -57,13 +62,13 @@
         </h2>
 
         <hr>
-        
+        <br>
         <h2 id="currentword" class="align-center">
           Current Word:
         </h2>
 
         <br>
-        
+        <hr>
         <h2 id="guesses" class="align-center">
           Number of Guesses Wrong:
         </h2>
@@ -73,11 +78,12 @@
           Letters Already Guessed:
         </h2>
 
+        <br>
+        <br>
 
       </div>
       <div class="col-sm-1"></div>
     </div>
-
 
   </div>
 

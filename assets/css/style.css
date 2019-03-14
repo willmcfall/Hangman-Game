@@ -1,11 +1,28 @@
 
 body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Amatic SC', cursive;
 }
 h1{
-    
-
+    text-align: center;
+    font-size: 50px;
 }
+
+h2{
+    font-size: 45px;
+}
+
+h3{
+    font-size: 40px;
+}
+
+h4{
+    font-size: 35px;
+}
+
+p{
+    font-size: 30px;
+}
+
 
 .navbar_custom{
     background-color: midnightblue
@@ -26,6 +43,15 @@ h1{
 }
 
 #wubbalubbadubdub{
-    color: white
+    color: white;
+    font-size: 30px;
+}
 
+#button_custom{
+    font-size: 30px;
+}
+
+#heading_custom{
+    margin:auto;
+    padding:50px 0px 0px 0px;
 }
