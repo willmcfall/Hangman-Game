@@ -11,12 +11,12 @@ console.log(numLosses);
 // Initiataes a function upon clicking of the start button
 function initiationFunction() {
 
-// Creates a global variable (continueCycle) which holds a boolean variable that allows for reseting of the game
-var continueCycle = true;
-console.log(continueCycle);
+  // Creates a global variable (continueCycle) which holds a boolean variable that allows for reseting of the game
+  var continueCycle = true;
+  console.log(continueCycle);
 
   // Asks the user to select a letter from A - Z
-  alert("Please select a letter from A - Z")
+  alert("Please select a letter from a - z!")
 
   startCycle();
 
@@ -83,7 +83,7 @@ console.log(continueCycle);
         if (actualWordLowerSplit[i] == " ") {
           blankSpaces[i] = " - ";
         }
-         else {
+        else {
           blankSpaces[i] = " _ ";
         };
       };
@@ -105,47 +105,67 @@ console.log(continueCycle);
         console.log(guessLetterLower);
         console.log(guessLetterArray);
 
-      // Checks if guessed letter matches any in the array to be guessed and replaces with the correct letter
-      for (var i = 0; i < actualWordLowerSplit.length; i++) {
-        if (actualWordLowerSplit[i] === guessLetterLower) {
-          blankSpaces[i] = " " + guessLetterLower + " ";
-          document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
+        // Checks if guessed letter matches any in the array to be guessed and replaces with the correct letter
+        for (var i = 0; i < actualWordLowerSplit.length; i++) {
+          if (actualWordLowerSplit[i] === guessLetterLower) {
+            blankSpaces[i] = " " + guessLetterLower + " ";
+            document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
+          }
+          else {
+            placeHolder++;
+          }
+        };
+
+        console.log(placeHolder);
+
+
+        // Checks whether any the guessed letter matches any letters from the word to be guessed and adds to numWrong if wrong and numRight if correct
+        if (placeHolder == actualWordLowerSplit.length) {
+          numWrong++;
+          placeHolder = 0;
         }
         else {
-          placeHolder++;
+          numRight++;
+          placeHolder = 0;
+        };
+
+        console.log(placeHolder);
+        console.log(numWrong);
+        console.log(numRight);
+
+        var counter = 0;
+        for (i = 0; i < blankSpaces.length; i++) {
+          if(blankSpaces[i] == " _ "){
+            counter++;
+          };
+        };
+
+
+        // If numWrong == 10 then the game is over and it restarts
+        if (numWrong == 10) {
+          numLosses++;
+          document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
+          blankSpace = [""]
+          numWrong = 0;
+          numRight = 0;
+          guessLetterArray = [""];
+          alert("You Lost! Please click start to play again!");
+          continueCycle = false;
         }
-      };
 
-      console.log(placeHolder);
-
-
-      // Checks whether any the guessed letter matches any letters from the word to be guessed and adds to numWrong if wrong and numRight if correct
-      if (placeHolder == actualWordLowerSplit.length) {
-        numWrong++;
-        placeHolder = 0;
-      }
-      else {
-        numRight++;
-        placeHolder = 0;
-      };
-
-      console.log(placeHolder);
-
-      // If numWrong == 10 then the game is over and it restarts
-      if (numWrong == 10) {
-        numLosses++;
-        document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
-        document.getElementById("currentword").innerHTML = "Current Word: ";
-        numWrong = 0;
-        numRight = 0;
-        guessLetterArray = [];
-        continueCycle = false;
-        alert("You Lost. Please click start to play again!");
-      };
-
-      document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
-      document.getElementById("correct").innerHTML = "Number of Guesses Right: " + numRight;
-      document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
+      else if (counter == 0){
+          numWins++;
+          document.getElementById("wins").innerHTML = "Number of Wins: " + numWins;
+          blankSpace = [""]
+          numWrong = 0;
+          numRight = 0;
+          guessLetterArray = [""];
+          continueCycle = false;
+          alert("You Won! Please click start to play again!");
+        };
+        document.getElementById("currentword").innerHTML = "Current Word: " + blankSpaces.join(" , ");
+        document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
+        document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
 
       };
 
@@ -153,7 +173,6 @@ console.log(continueCycle);
 
   };
 
-  
 };
 
 
