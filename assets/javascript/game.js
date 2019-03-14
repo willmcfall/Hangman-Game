@@ -58,6 +58,7 @@ alert("Please select a letter from A - Z")
 // Creates randomized word that holds the current word to be guessed
 // Creates lower case version of word to be guessed
 // Creates an array of the individual letters in the word to tbe guessed
+
 var potentialWord = ["Rick Sanchez","Morty Smith","Summer Smith","Beth Smith","Jerry Smith","Abadango Cluster Princess","Abradolf Lincler","Adjudicator Rick","Agency Director","Alan Rails","Albert Einstein","Alexander","Alien Googah","Alien Morty","Alien Rick","Amish Cyborg",
 "Annie","Antenna Morty","Antenna Rick","Ants in my Eyes Johnson", "Mr Poopy Butthole"];
 var actualWord = potentialWord[Math.floor(Math.random() * potentialWord.length)];
@@ -119,8 +120,24 @@ for (var i = 0; i < actualWordLowerSplit.length; i++) {
 
     console.log(placeHolder);
 
-//If incorrect
 
+    if (numWrong == 10){
+      numLosses ++;
+      document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
+      numWrong = 0;
+      numRight = 0;
+      guessLetterArray = [];
+    }
+
+    if (numWrong == 10){
+      numLosses ++;
+      document.getElementById("wins").innerHTML = "Number of Wins: " + numWins;
+      // Prints the number of loses to the display
+      document.getElementById("loses").innerHTML = "Number of Losses: " + numLosses;
+      numWrong = 0;
+    }
+
+    
   
   document.getElementById("guesses").innerHTML = "Number of Guesses Wrong: " + numWrong;
   document.getElementById("already").innerHTML = "Letters Already Guessed: " + guessLetterArray.join(" , ");
